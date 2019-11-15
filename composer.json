@@ -49,10 +49,5 @@
 				"bower-asset-library": "vendor/bower-asset"
 			}
 		}
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.x-dev"
-		}
 	}
 }
