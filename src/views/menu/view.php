@@ -33,10 +33,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'parent',
             'route',
-            'visible',
+
+            [
+                'attribute' => 'visible',
+                'format' => 'raw',
+                'value' => function ($model) {
+
+                    return $model::eval($model->visible, true);
+                }
+            ],
             'icon',
             'order',
             'options:ntext',
+            'data:ntext',
         ],
     ]) ?>
 

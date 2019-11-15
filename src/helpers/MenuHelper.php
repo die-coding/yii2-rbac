@@ -25,12 +25,13 @@ use diecoding\rbac\Module;
  * 
  * ```
  * $callback = function ($menu) {
+ *    $data = \diecoding\rbac\models\Menu::eval($menu['data']);
  *    return [
  *            'label' => $menu['name'],
  *            'url' => [$menu['route']],
  *            'visible' => $menu['visible'],
  *            'options' => $menu['options'],
- *            'items' => $menu['children']
+ *            'items' => $menu['children'],
  *        ]
  *    ]
  * }
@@ -55,6 +56,7 @@ class MenuHelper
      * 
      * ```
      * function ($menu) {
+     *    $data = \diecoding\rbac\models\Menu::eval($menu['data']);
      *    return [
      *            'label' => $menu['name'],
      *            'url' => [$menu['route']],
@@ -197,7 +199,7 @@ class MenuHelper
     public static function parseOptions($options)
     {
         if (!empty($options)) {
-            return eval($options);
+            return Menu::eval($options);
         }
 
         return [];
@@ -211,7 +213,7 @@ class MenuHelper
     public static function convertVisible($visible)
     {
         if (!empty($visible)) {
-            return eval($visible);
+            return Menu::eval($visible);
         }
 
         return true;

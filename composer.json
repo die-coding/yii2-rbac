@@ -31,6 +31,7 @@
 	},
 	"minimum-stability": "stable",
 	"require": {
+		"php": ">=7.0",
 		"mdmsoft/yii2-admin": "~2.0"
 	},
 	"require-dev": {

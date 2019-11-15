@@ -64,6 +64,7 @@ class m191115_184338_auth_menu extends Migration
             'icon'    => $this->string(64),
             'order'   => $this->integer(),
             'options' => $this->binary(),
+            'data'    => $this->binary(),
             "FOREIGN KEY ([[parent]]) REFERENCES {$config->menuTable}([[id]]) ON DELETE SET NULL ON UPDATE CASCADE",
         ], $tableOptions);
     }

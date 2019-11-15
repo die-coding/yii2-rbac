@@ -26,6 +26,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'options')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'data')->textarea(['rows' => 6]) ?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('diecoding-rbac', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

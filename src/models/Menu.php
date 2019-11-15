@@ -17,6 +17,7 @@ use diecoding\rbac\Module;
  * @property string $icon
  * @property int $order
  * @property string $options
+ * @property string $data For more information to this menu
  *
  * @property Menu $menuParent
  * @property Menu[] $menuChildren 
@@ -69,7 +70,7 @@ class Menu extends \yii\db\ActiveRecord
                 'range' => static::find()->select(['name'])->column(),
                 'message' => 'Menu "{value}" not found.',
             ],
-            [['parent', 'route', 'visible', 'icon', 'order', 'options'], 'default'],
+            [['parent', 'route', 'visible', 'icon', 'order', 'options', 'data'], 'default'],
             [['parent'], 'filterParent', 'when' => function () {
                 return !$this->isNewRecord;
             }],
@@ -96,6 +97,7 @@ class Menu extends \yii\db\ActiveRecord
             'icon' => Yii::t('diecoding-rbac', 'Icon'),
             'order' => Yii::t('diecoding-rbac', 'Order'),
             'options' => Yii::t('diecoding-rbac', 'Options'),
+            'data' => Yii::t('diecoding-rbac', 'Data'),
         ];
     }
 
@@ -116,6 +118,36 @@ class Menu extends \yii\db\ActiveRecord
             }
             $parent = $query->params([':id' => $parent])->scalar($db);
         }
+    }
+
+    /**
+     * Handle eval() code
+     *
+     * @param string $code
+     * @param boolean $print
+     * @return mixed
+     */
+    public static function eval($code, $print = false)
+    {
+        try {
+            $result = eval($code);
+        } catch (\ParseError $e) {
+            $result = $e;
+        }
+
+        if ($print) {
+            $result = <<< HTML
+<pre class="lang-php">
+INPUT:
+$code
+
+OUTPUT:
+$result
+</pre>
+HTML;
+        }
+
+        return $result;
     }
 
     /**

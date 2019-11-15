@@ -18,7 +18,7 @@ class Menu extends MenuModel
     {
         return [
             [['id', 'parent', 'order'], 'integer'],
-            [['name', 'route', 'visible', 'icon', 'options'], 'safe'],
+            [['name', 'route', 'visible', 'icon', 'options', 'data'], 'safe'],
         ];
     }
 
@@ -67,7 +67,8 @@ class Menu extends MenuModel
             ->andFilterWhere(['like', 'route', $this->route])
             ->andFilterWhere(['like', 'visible', $this->visible])
             ->andFilterWhere(['like', 'icon', $this->icon])
-            ->andFilterWhere(['like', 'options', $this->options]);
+            ->andFilterWhere(['like', 'options', $this->options])
+            ->andFilterWhere(['like', 'data', $this->data]);
 
         return $dataProvider;
     }
