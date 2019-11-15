@@ -2,6 +2,8 @@
 
 namespace diecoding\rbac;
 
+use Yii;
+
 /**
  * @inheritDoc
  * 
@@ -39,6 +41,13 @@ class Module extends \mdm\admin\Module
     public function init()
     {
         parent::init();
+        if (!isset(Yii::$app->i18n->translations['diecoding-rbac'])) {
+            Yii::$app->i18n->translations['diecoding-rbac'] = [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'sourceLanguage' => 'en',
+                'basePath' => '@diecoding/rbac/languages',
+            ];
+        }
 
         $this->controllerMap = [
             'menu' => [

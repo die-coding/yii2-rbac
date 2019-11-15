@@ -90,14 +90,14 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'parent' => 'Parent',
-            'route' => 'Route',
-            'assign' => 'Assign',
-            'visible' => 'Visible',
-            'icon' => 'Icon',
-            'order' => 'Order',
-            'options' => 'Options',
+            'name' => Yii::t('diecoding-rbac', 'Name'),
+            'parent' => Yii::t('diecoding-rbac', 'Parent'),
+            'route' => Yii::t('diecoding-rbac', 'Route'),
+            'assign' => Yii::t('diecoding-rbac', 'Assign'),
+            'visible' => Yii::t('diecoding-rbac', 'Visible'),
+            'icon' => Yii::t('diecoding-rbac', 'Icon'),
+            'order' => Yii::t('diecoding-rbac', 'Order'),
+            'options' => Yii::t('diecoding-rbac', 'Options'),
         ];
     }
 
