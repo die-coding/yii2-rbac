@@ -1,0 +1,54 @@
+{
+	"name": "diecoding/yii2-rbac",
+	"description": "RBAC / Auth Manager for Yii2 Extends 'mdmsoft/yii2-admin': '~2.0'",
+	"type": "yii2-extension",
+	"keywords": [
+		"yii2",
+		"extension",
+		"rbac",
+		"auth",
+		"simple rbac"
+	],
+	"authors": [
+		{
+			"name": "Die Coding",
+			"email": "diecoding@gmail.com",
+			"homepage": "https://diecoding.com",
+			"role": "Organization"
+		},
+		{
+			"name": "Sugeng Sulistiyawan",
+			"email": "sugeng.sulistiyawan@gmail.com",
+			"homepage": "https://iam.diecoding.com",
+			"role": "Founder"
+		}
+	],
+	"homepage": "https://diecoding.com/yii2/plugins/yii2-rbac",
+	"license": "BSD-3-Clause",
+	"support": {
+		"issues": "https://github.com/die-coding/yii2-rbac/issues",
+		"source": "https://github.com/die-coding/yii2-rbac"
+	},
+	"minimum-stability": "stable",
+	"require": {
+		"mdmsoft/yii2-admin": "~2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"diecoding\\rbac\\": "src"
+		}
+	},
+	"config": {
+		"fxp-asset": {
+			"installer-paths": {
+				"npm-asset-library": "vendor/npm-asset",
+				"bower-asset-library": "vendor/bower-asset"
+			}
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}
