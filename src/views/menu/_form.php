@@ -18,8 +18,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'route')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'assign')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'visible')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>

@@ -13,7 +13,6 @@ use diecoding\rbac\Module;
  * @property string $name
  * @property int $parent
  * @property string $route
- * @property string $assign
  * @property string $visible
  * @property string $icon
  * @property int $order
@@ -70,7 +69,7 @@ class Menu extends \yii\db\ActiveRecord
                 'range' => static::find()->select(['name'])->column(),
                 'message' => 'Menu "{value}" not found.',
             ],
-            [['parent', 'route', 'assign', 'visible', 'icon', 'order', 'options'], 'default'],
+            [['parent', 'route', 'visible', 'icon', 'order', 'options'], 'default'],
             [['parent'], 'filterParent', 'when' => function () {
                 return !$this->isNewRecord;
             }],
@@ -93,7 +92,6 @@ class Menu extends \yii\db\ActiveRecord
             'name' => Yii::t('diecoding-rbac', 'Name'),
             'parent' => Yii::t('diecoding-rbac', 'Parent'),
             'route' => Yii::t('diecoding-rbac', 'Route'),
-            'assign' => Yii::t('diecoding-rbac', 'Assign'),
             'visible' => Yii::t('diecoding-rbac', 'Visible'),
             'icon' => Yii::t('diecoding-rbac', 'Icon'),
             'order' => Yii::t('diecoding-rbac', 'Order'),

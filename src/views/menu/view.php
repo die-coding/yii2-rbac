@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'parent',
             'route',
-            'assign',
             'visible',
             'icon',
             'order',

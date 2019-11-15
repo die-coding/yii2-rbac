@@ -56,15 +56,14 @@ class m191115_184338_auth_menu extends Migration
         }
 
         $this->createTable($config->menuTable, [
-            'id' => $this->primaryKey(),
-            'name' => $this->string(128)->notNull(),
-            'parent' => $this->integer(),
-            'route' => $this->string(),
-            'assign' => $this->string(),
-            'visible' => $this->string()->defaultValue("true"),
-            'icon' => $this->string(64),
-            'order' => $this->integer(),
-            'options' => $this->text(),
+            'id'      => $this->primaryKey(),
+            'name'    => $this->string(128)->notNull(),
+            'parent'  => $this->integer(),
+            'route'   => $this->string(),
+            'visible' => $this->binary(),
+            'icon'    => $this->string(64),
+            'order'   => $this->integer(),
+            'options' => $this->binary(),
             "FOREIGN KEY ([[parent]]) REFERENCES {$config->menuTable}([[id]]) ON DELETE SET NULL ON UPDATE CASCADE",
         ], $tableOptions);
     }
