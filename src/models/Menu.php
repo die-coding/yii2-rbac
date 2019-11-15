@@ -125,26 +125,52 @@ class Menu extends \yii\db\ActiveRecord
      *
      * @param string $code
      * @param boolean $print
+     * @param mixed $defaultValue
      * @return mixed
      */
     public static function eval($code, $print = false)
     {
         try {
             $result = eval($code);
+            $error  = false;
+            $value  = $result;
         } catch (\ParseError $e) {
-            $result = $e;
+            $result = false;
+            $value  = "Error: Input code";
+            $error  = $e;
         }
 
         if ($print) {
+            $label = [
+                Yii::t('diecoding-rbac', 'VALUE: (value used for this [visible])'),
+                Yii::t('diecoding-rbac', 'INPUT: (raw input)'),
+                Yii::t('diecoding-rbac', 'OUTPUT: (raw output)'),
+            ];
             $result = <<< HTML
-<pre class="lang-php">
-INPUT:
-$code
+<style>
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+</style>
 
-OUTPUT:
-$result
-</pre>
+<code>{$label[0]}</code>
+<pre>$value</pre>
+
+<code>{$label[1]}</code>
+<pre>$code</pre>
 HTML;
+
+            if ($error !== false) {
+                $result .= <<< HTML
+
+<code>{$label[2]}</code>
+<pre>$error</pre>
+HTML;
+            }
         }
 
         return $result;

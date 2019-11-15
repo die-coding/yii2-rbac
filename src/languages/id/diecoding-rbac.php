@@ -25,4 +25,8 @@ return [
     'Icon' => 'Ikon',
     'Order' => 'Urutan',
     'Options' => '',
+
+    'VALUE: (value used for this [visible])' => '',
+    'INPUT: (raw input)' => '',
+    'OUTPUT: (raw output)' => '',
 ];
