@@ -1,30 +1,51 @@
 <?php
-/**
- * @link http://www.diecoding.com/
- * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
- * @copyright Copyright (c) 2018
- */
 
 namespace diecoding\rbac;
 
-use Yii;
-use yii\helpers\Html;
-use yii\helpers\Inflector;
-use yii\web\Application;
-
 /**
  * @inheritDoc
- *
- * @author Die Coding <diecoding@gmail.com>
- * @since  0.0.0
+ * 
+ * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
+ * @copyright 2019 Die Coding
+ * @license MIT
+ * @link https://www.diecoding.com
+ * @version 1.0.0
  */
 class Module extends \mdm\admin\Module
 {
     /**
-     * @inheritdoc
+     * @var Connection Database connection. Defaults to "db".
+     */
+    public $db = 'db';
+
+    /**
+     * @var string the name of the table storing menu item hierarchy. Defaults to "auth_menu".
+     */
+    public $menuTable = '{{%auth_menu}}';
+
+    /**
+     * @inheritDoc
+     */
+    public $controllerNamespace = 'mdm\admin\controllers';
+
+    /**
+     * @inheritDoc
+     */
+    public $layout = 'left-menu';
+
+    /**
+     * @inheritDoc
      */
     public function init()
     {
         parent::init();
+
+        $this->controllerMap = [
+            'menu' => [
+                'class' => 'diecoding\rbac\controllers\MenuController',
+            ],
+        ];
+
+        $this->setViewPath('@mdm/admin/views');
     }
 }

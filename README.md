@@ -31,6 +31,6 @@ composer update
 Guide
 -----
 
-- [Instalasi](https://github.com/die-coding/yii2-rbac/blob/master/guide/installation.md)
-- [Konfigurasi](https://github.com/die-coding/yii2-rbac/blob/master/guide/configuration.md)
-- [Menu](https://github.com/die-coding/yii2-rbac/blob/master/guide/menu.md)
+- [Instalasi](https://github.com/die-coding/yii2-rbac/blob/master/documentation/installation.md)
+- [Konfigurasi](https://github.com/die-coding/yii2-rbac/blob/master/documentation/configuration.md)
+- [Menu](https://github.com/die-coding/yii2-rbac/blob/master/documentation/menu.md)
