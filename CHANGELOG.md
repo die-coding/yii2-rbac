@@ -1,6 +1,14 @@
 Yii2 RBAC Change Log
 ====================
 
+Version 0.1.2
+--------------
+- Add Doc
+
+Version 0.1.1
+--------------
+- Fix bug
+
 Version 0.1.0
 --------------
 - Update menu
