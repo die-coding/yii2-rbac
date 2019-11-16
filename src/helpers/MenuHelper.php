@@ -28,8 +28,9 @@ use yii\caching\TagDependency;
  *    return [
  *            'label' => $menu['name'],
  *            'url' => [$menu['route']],
+ *            'icon' => $menu['icon'],
  *            'visible' => $menu['visible'],
- *            'options' => $menu['options'],
+ *            'linkOptions' => $menu['options'],
  *            'items' => $menu['children']
  *        ]
  *    ]
@@ -59,8 +60,9 @@ class MenuHelper
      *    return [
      *            'label' => $menu['name'],
      *            'url' => [$menu['route']],
+     *            'icon' => $menu['icon'],
      *            'visible' => $menu['visible'],
-     *            'options' => $menu['options'],
+     *            'linkOptions' => $menu['options'],
      *            'items' => $menu['children']
      *        ]
      *    ]
