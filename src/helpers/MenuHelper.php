@@ -194,7 +194,7 @@ class MenuHelper
      * Normalize menu
      * @param  array $assigned
      * @param  array $menus
-     * @param  Closure $callback
+     * @param  \Closure $callback
      * @param  integer $parent
      * @return array
      */
