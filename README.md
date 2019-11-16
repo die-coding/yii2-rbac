@@ -11,7 +11,7 @@ RBAC / Auth Manager for Yii2 Extends `'mdmsoft/yii2-admin': '~2.0'`
 
 ## Documentation
 
-> **Disclaimer:** This pakage is actually only used to make it easier for me to build my personal application, but if you are interested please just try it. This package is extends from ['mdmsoft/yii2-admin': '~2.0'](https://github.com/mdmsoft/yii2-admin/), you can also use documentation from [https://github.com/mdmsoft/yii2-admin/](https://github.com/mdmsoft/yii2-admin/).
+> **Disclaimer:** This package is actually only used to make it easier for me to build my personal application, but if you are interested please just try it. This package is extends from ['mdmsoft/yii2-admin': '~2.0'](https://github.com/mdmsoft/yii2-admin/), you can also use documentation from [https://github.com/mdmsoft/yii2-admin/](https://github.com/mdmsoft/yii2-admin/).
 
 -   [Change Log](CHANGELOG.md).
 -   [Installation](#installation).
