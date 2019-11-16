@@ -4,9 +4,9 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
-/* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $searchModel mdm\admin\models\searchs\Menu */
+/** @var $this yii\web\View */
+/** @var $dataProvider yii\data\ActiveDataProvider */
+/** @var $searchModel diecoding\rbac\models\searchs\Menu */
 
 $this->title = Yii::t('rbac-admin', 'Menus');
 $this->params['breadcrumbs'][] = $this->title;

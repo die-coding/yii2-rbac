@@ -2,8 +2,10 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model mdm\admin\models\Menu */
+/**
+ * @var $this yii\web\View
+ * @var $model diecoding\rbac\models\Menu
+ */
 
 $this->title = Yii::t('rbac-admin', 'Update Menu') . ': ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Menus'), 'url' => ['index']];
