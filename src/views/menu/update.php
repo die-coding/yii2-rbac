@@ -7,10 +7,10 @@ use yii\helpers\Html;
  * @var $model diecoding\rbac\models\Menu
  */
 
-$this->title = Yii::t('rbac-admin', 'Update Menu') . ': ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Menus'), 'url' => ['index']];
+$this->title = Yii::t('diecoding-rbac', 'Update Menu') . ': ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('diecoding-rbac', 'Menus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('rbac-admin', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('diecoding-rbac', 'Update');
 ?>
 <div class="menu-update">
 

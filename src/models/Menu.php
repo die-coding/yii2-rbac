@@ -14,11 +14,11 @@ use diecoding\rbac\Module;
  * @property string $name
  * @property int $parent
  * @property string $route
- * @property string $visible
+ * @property int $visible
  * @property string $icon
  * @property int $order
- * @property string $options
- * @property string $data For more information to this menu
+ * @property resource $options
+ * @property resource $data For more information to this menu
  *
  * @property Menu $menuParent
  * @property Menu[] $menuChildren 
@@ -31,6 +31,9 @@ use diecoding\rbac\Module;
  */
 class Menu extends \yii\db\ActiveRecord
 {
+    const VISIBLE_HIDE = 0;
+    const VISIBLE_SHOW = 1;
+
     public $parent_name;
 
     private static $_routes;
@@ -69,16 +72,18 @@ class Menu extends \yii\db\ActiveRecord
                 'range' => static::find()->select(['name'])->column(),
                 'message' => 'Menu "{value}" not found.',
             ],
-            [['parent', 'route', 'visible', 'icon', 'order', 'options', 'data'], 'default'],
+            [['parent', 'route', 'icon', 'order', 'options', 'data'], 'default'],
             [['parent'], 'filterParent', 'when' => function () {
                 return !$this->isNewRecord;
             }],
-            [['order'], 'integer'],
+            [['visible', 'order'], 'integer'],
             [
                 ['route'], 'in',
                 'range' => static::getSavedRoutes(),
                 'message' => 'Route "{value}" not found.',
-            ]
+            ],
+            ['visible', 'default', 'value' => self::VISIBLE_SHOW],
+            ['visible', 'in', 'range' => [self::VISIBLE_HIDE, self::VISIBLE_SHOW]],
         ];
     }
 
@@ -126,10 +131,11 @@ class Menu extends \yii\db\ActiveRecord
      * @param boolean $print
      * @return mixed
      */
-    public static function eval($code, $print = false)
+    public static function evalOptions($code, $print = false)
     {
+        $_code = "return {$code};";
         try {
-            $result = eval("$code");
+            $result = eval($_code);
             $error  = false;
             $value  = print_r($result, true);
         } catch (\ParseError $e) {
@@ -145,16 +151,6 @@ class Menu extends \yii\db\ActiveRecord
                 Yii::t('diecoding-rbac', 'OUTPUT: (raw output)'),
             ];
             $result = <<< HTML
-<style>
-pre {
-    white-space: pre-wrap;       /* Since CSS 2.1 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-}
-</style>
-
 <code>{$label[0]}</code>
 <pre>$value</pre>
 

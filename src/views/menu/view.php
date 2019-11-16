@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 
 /**
@@ -9,7 +10,7 @@ use yii\widgets\DetailView;
  */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Menus'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('diecoding-rbac', 'Menus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="menu-view">
@@ -17,53 +18,52 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?=
-        Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->id], [
+        <?php $form = ActiveForm::begin(); ?>
+        <?= Html::a(Yii::t('diecoding-rbac', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('diecoding-rbac', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
-        ])
-        ?>
+        ]) ?>
+        <?php ActiveForm::end(); ?>
     </p>
 
     <?=
-    DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'menuParent.name:text:Parent',
-            'name',
-            'route',
-            'order',
-            'icon',
-            [
-                'attribute' => 'visible',
-                'format' => 'raw',
-                'value' => function ($model) {
+        DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                'menuParent.name:text:Parent',
+                'name',
+                'route',
+                'icon',
+                'order',
+                [
+                    'attribute' => 'visible',
+                    'value' => function ($model) {
+                        switch ($model->visible) {
+                            case $model::VISIBLE_SHOW:
+                                return Yii::t('diecoding-rbac', 'Show');
+                                break;
 
-                    return $model::eval($model->visible, true);
-                }
-            ],
-            [
-                'attribute' => 'options',
-                'format' => 'raw',
-                'value' => function ($model) {
+                            default:
+                                return Yii::t('diecoding-rbac', 'Hide');
+                                break;
+                        }
+                    }
+                ],
+                [
+                    'attribute' => 'options',
+                    'format' => 'raw',
+                    'value' => function ($model) {
 
-                    return $model::eval($model->options, true);
-                }
+                        return $model::evalOptions($model->options, true);
+                    }
+                ],
+                'data',
             ],
-            [
-                'attribute' => 'data',
-                'format' => 'raw',
-                'value' => function ($model) {
-
-                    return $model::eval($model->data, true);
-                }
-            ],
-        ],
-    ])
+        ])
     ?>
 
 </div>

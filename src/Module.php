@@ -51,6 +51,8 @@ class Module extends \mdm\admin\Module
             ];
         }
 
+        AppAsset::register(Yii::$app->view);
+
         $this->controllerMap = [
             'menu' => [
                 'class' => 'diecoding\rbac\controllers\MenuController',

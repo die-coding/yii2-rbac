@@ -37,17 +37,20 @@ $this->registerJs($this->render('_script.min.js'));
         </div>
         <div class="col-sm-6">
 
-            <?= $form->field($model, 'visible')->textarea(['rows' => 3]) ?>
+            <?= $form->field($model, 'visible')->dropDownList([
+                $model::VISIBLE_SHOW => Yii::t('diecoding-rbac', 'Show'),
+                $model::VISIBLE_HIDE => Yii::t('diecoding-rbac', 'Hide'),
+            ]) ?>
 
-            <?= $form->field($model, 'options')->textarea(['rows' => 3]) ?>
+            <?= $form->field($model, 'options')->textarea(['rows' => 4]) ?>
 
-            <?= $form->field($model, 'data')->textarea(['rows' => 3]) ?>
+            <?= $form->field($model, 'data')->textarea(['rows' => 4]) ?>
         </div>
     </div>
 
     <div class="form-group">
         <?=
-            Html::submitButton($model->isNewRecord ? Yii::t('rbac-admin', 'Create') : Yii::t('rbac-admin', 'Update'), ['class' => $model->isNewRecord
+            Html::submitButton($model->isNewRecord ? Yii::t('diecoding-rbac', 'Create') : Yii::t('diecoding-rbac', 'Update'), ['class' => $model->isNewRecord
                 ? 'btn btn-success' : 'btn btn-primary'])
         ?>
     </div>

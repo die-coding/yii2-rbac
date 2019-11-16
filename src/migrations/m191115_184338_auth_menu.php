@@ -60,7 +60,7 @@ class m191115_184338_auth_menu extends Migration
             'name'    => $this->string(128)->notNull(),
             'parent'  => $this->integer(),
             'route'   => $this->string(),
-            'visible' => $this->binary(),
+            'visible' => $this->smallInteger()->defaultValue(1),
             'icon'    => $this->string(64),
             'order'   => $this->integer(),
             'options' => $this->binary(),

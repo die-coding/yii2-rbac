@@ -24,13 +24,13 @@ use diecoding\rbac\Module;
  * 
  * ```
  * $callback = function ($menu) {
- *    $data = \diecoding\rbac\models\Menu::eval($menu['data']);
+ *    $data = eval($menu['data']);
  *    return [
  *            'label' => $menu['name'],
  *            'url' => [$menu['route']],
  *            'visible' => $menu['visible'],
  *            'options' => $menu['options'],
- *            'items' => $menu['children'],
+ *            'items' => $menu['children']
  *        ]
  *    ]
  * }
@@ -55,7 +55,7 @@ class MenuHelper
      * 
      * ```
      * function ($menu) {
-     *    $data = \diecoding\rbac\models\Menu::eval($menu['data']);
+     *    $data = eval($menu['data']);
      *    return [
      *            'label' => $menu['name'],
      *            'url' => [$menu['route']],
@@ -191,34 +191,6 @@ class MenuHelper
     }
 
     /**
-     * Parse options
-     * @param  string $options
-     * @return mixed
-     */
-    public static function parseOptions($options)
-    {
-        if (!empty($options)) {
-            return Menu::eval($options);
-        }
-
-        return [];
-    }
-
-    /**
-     * Convert visible value to bool
-     * @param  string $visible
-     * @return mixed
-     */
-    public static function convertVisible($visible)
-    {
-        if (!empty($visible)) {
-            return Menu::eval($visible);
-        }
-
-        return true;
-    }
-
-    /**
      * Normalize menu
      * @param  array $assigned
      * @param  array $menus
@@ -232,6 +204,12 @@ class MenuHelper
         $order = [];
         foreach ($assigned as $id) {
             $menu = $menus[$id];
+            if ($menu['options'] !== null) {
+                $menu['options'] = Menu::evalOptions($menu['options']);
+            } else {
+                $menu['options'] = [];
+            }
+            $menu['visible'] = $menu['visible'] == Menu::VISIBLE_SHOW;
             if ($menu['parent'] == $parent) {
                 $menu['children'] = static::normalizeMenu($assigned, $menus, $callback, $id);
                 if ($callback !== null) {
@@ -241,8 +219,8 @@ class MenuHelper
                         'label' => $menu['name'],
                         'url' => static::parseRoute($menu['route']),
                         'icon' => $menu['icon'],
-                        'visible' => static::convertVisible($menu['visible']),
-                        'linkOptions' => static::parseOptions($menu['options']),
+                        'visible' => $menu['visible'],
+                        'linkOptions' => $menu['options'],
                     ];
                     if ($menu['children'] != []) {
                         $item['items'] = $menu['children'];

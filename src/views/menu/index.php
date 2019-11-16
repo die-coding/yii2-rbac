@@ -8,40 +8,57 @@ use yii\widgets\Pjax;
 /** @var $dataProvider yii\data\ActiveDataProvider */
 /** @var $searchModel diecoding\rbac\models\searchs\Menu */
 
-$this->title = Yii::t('rbac-admin', 'Menus');
+$this->title = Yii::t('diecoding-rbac', 'Menus');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="menu-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]);  ?>
 
     <p>
-        <?= Html::a(Yii::t('rbac-admin', 'Create Menu'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('diecoding-rbac', 'Create Menu'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
     <?=
-    GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'name',
-            [
-                'attribute' => 'menuParent.name',
-                'filter' => Html::activeTextInput($searchModel, 'parent_name', [
-                    'class' => 'form-control', 'id' => null
-                ]),
-                'label' => Yii::t('rbac-admin', 'Parent'),
+        GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
+                'name',
+                [
+                    'attribute' => 'menuParent.name',
+                    'filter' => Html::activeTextInput($searchModel, 'parent_name', [
+                        'class' => 'form-control', 'id' => null
+                    ]),
+                    'label' => Yii::t('diecoding-rbac', 'Parent'),
+                ],
+                'route',
+                'icon',
+                'order',
+                [
+                    'attribute' => 'visible',
+                    'filter' => [
+                        $searchModel::VISIBLE_SHOW => Yii::t('diecoding-rbac', 'Show'),
+                        $searchModel::VISIBLE_HIDE => Yii::t('diecoding-rbac', 'Hide'),
+                    ],
+                    'value' => function ($model) {
+                        switch ($model->visible) {
+                            case $model::VISIBLE_SHOW:
+                                return Yii::t('diecoding-rbac', 'Show');
+                                break;
+                            
+                            default:
+                                return Yii::t('diecoding-rbac', 'Hide');
+                                break;
+                        }
+                    }
+                ],
+                ['class' => 'yii\grid\ActionColumn'],
             ],
-            'route',
-            'order',
-            'icon',
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]);
+        ]);
     ?>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
 
 </div>

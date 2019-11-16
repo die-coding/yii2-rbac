@@ -25,7 +25,7 @@ class Menu extends MenuModel
     public function rules()
     {
         return [
-            [['id', 'parent', 'order'], 'integer'],
+            [['id', 'parent', 'order', 'visible'], 'integer'],
             [['name', 'route', 'parent_name', 'icon'], 'safe'],
         ];
     }
@@ -81,6 +81,7 @@ class Menu extends MenuModel
         $query->andFilterWhere(['like', 'lower(t.name)', strtolower($this->name)])
             ->andFilterWhere(['like', 't.route', $this->route])
             ->andFilterWhere(['like', 'lower(parent.name)', strtolower($this->parent_name)])
+            ->andFilterWhere(['like', 't.visible', $this->visible])
             ->andFilterWhere(['like', 't.icon', $this->icon]);
 
         return $dataProvider;

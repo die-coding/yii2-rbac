@@ -7,8 +7,8 @@ use yii\helpers\Html;
  * @var $model diecoding\rbac\models\Menu
  */
 
-$this->title = Yii::t('rbac-admin', 'Create Menu');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Menus'), 'url' => ['index']];
+$this->title = Yii::t('diecoding-rbac', 'Create Menu');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('diecoding-rbac', 'Menus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="menu-create">
