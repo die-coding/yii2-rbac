@@ -47,11 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         switch ($model->visible) {
                             case $model::VISIBLE_SHOW:
                                 return Yii::t('diecoding-rbac', 'Show');
-                                break;
                             
                             default:
                                 return Yii::t('diecoding-rbac', 'Hide');
-                                break;
                         }
                     }
                 ],
