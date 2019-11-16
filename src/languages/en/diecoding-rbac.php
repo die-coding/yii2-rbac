@@ -26,6 +26,7 @@ return [
     'Order' => '',
     'Options' => '',
 
+    'Error: Input code' => '',
     'VALUE: (value used for this [visible])' => '',
     'INPUT: (raw input)' => '',
     'OUTPUT: (raw output)' => '',
