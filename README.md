@@ -16,9 +16,9 @@ RBAC / Auth Manager for Yii2 Extends `'mdmsoft/yii2-admin': '~2.0'`
 -   [Change Log](CHANGELOG.md).
 -   [Installation](#installation).
 -   [Authorization Guide](https://www.yiiframework.com/doc/guide/2.0/en/security-authorization). Important, read this first before you continue.
--   [Configuration](documentations/configuration.md)
--   [Using Menu](documentations/menu.md).
--   [Screenshots](documentations/screenshots).
+-   [Configuration](https://github.com/die-coding/yii2-rbac/blob/master/documentation/configuration.md)
+-   [Using Menu](https://github.com/die-coding/yii2-rbac/blob/master/documentation/menu.md).
+-   [Screenshots](https://github.com/die-coding/yii2-rbac/blob/master/documentation/screenshots).
 
 ## Installation
 
