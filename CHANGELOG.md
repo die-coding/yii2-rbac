@@ -1,16 +1,18 @@
 Yii2 RBAC Change Log
 ====================
 
+Version 0.0.13
+-------------=
+- Fix bug on menu
+
 
 Version 0.0.12
--------------
-
+-------------=
 - Fix bug
 
 
 Version 0.0.11
--------------
-
+-------------=
 - Added "badge" on Readme.md
 
 
