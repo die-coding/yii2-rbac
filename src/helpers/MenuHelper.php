@@ -2,10 +2,10 @@
 
 namespace diecoding\rbac\helpers;
 
-use yii\caching\TagDependency;
-use mdm\admin\components\Configs;
-use diecoding\rbac\models\Menu;
 use diecoding\rbac\Module;
+use diecoding\rbac\models\Menu;
+use mdm\admin\components\Configs;
+use yii\caching\TagDependency;
 
 /**
  * MenuHelper used to generate menu depend of user role.
