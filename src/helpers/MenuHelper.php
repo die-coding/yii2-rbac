@@ -198,7 +198,7 @@ class MenuHelper
      * @param  integer $parent
      * @return array
      */
-    protected static function normalizeMenu(&$assigned, &$menus, $callback, $parent = null)
+    protected static function normalizeMenu(&$assigned, &$menus, $callback = null, $parent = null)
     {
         $result = [];
         $order = [];
