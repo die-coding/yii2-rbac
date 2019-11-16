@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?php $form = ActiveForm::begin(); ?>
+        <?php ActiveForm::begin(); ?>
         <?= Html::a(Yii::t('diecoding-rbac', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('diecoding-rbac', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
