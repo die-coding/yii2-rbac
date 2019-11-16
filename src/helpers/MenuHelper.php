@@ -129,7 +129,7 @@ class MenuHelper
             $assigned = static::requiredParent($assigned, $menus);
             if ($cache !== null) {
                 $cache->set($key, $assigned, $module->cacheDuration, new TagDependency([
-                    'tags' => Configs::CACHE_TAG
+                    'tags' => $module::CACHE_TAG
                 ]));
             }
         }
@@ -139,7 +139,7 @@ class MenuHelper
             $result = static::normalizeMenu($assigned, $menus, $callback, $root);
             if ($cache !== null && $callback === null) {
                 $cache->set($key, $result, $module->cacheDuration, new TagDependency([
-                    'tags' => Configs::CACHE_TAG
+                    'tags' => $module::CACHE_TAG
                 ]));
             }
         }

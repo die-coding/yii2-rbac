@@ -38,6 +38,11 @@ class Module extends \mdm\admin\Module
     public $layout = 'left-menu';
 
     /**
+     * 
+     */
+    private $_config;
+
+    /**
      * @inheritDoc
      */
     public function init()
