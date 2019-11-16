@@ -2,6 +2,8 @@
 
 namespace diecoding\rbac\components;
 
+use yii\base\Component;
+
 /**
  * @inheritDoc
  * 
@@ -11,6 +13,6 @@ namespace diecoding\rbac\components;
  * @link https://www.diecoding.com
  * @version 1.0.0
  */
-class Assign extends \yii\rbac\ManagerInterface
+class Assign extends Component
 {
 }
