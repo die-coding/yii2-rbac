@@ -2,12 +2,12 @@
 
 RBAC / Auth Manager for Yii2 Extends `'mdmsoft/yii2-admin': '~2.0'`
 
-[![Latest Stable Version](https://poser.pugx.org/diecoding/yii2-rbac/v/stable?format=flat-square)](https://github.com/die-coding/yii2-rbac/releases)
-[![Total Downloads](https://poser.pugx.org/diecoding/yii2-rbac/downloads?format=flat-square)](https://packagist.org/packages/diecoding/yii2-rbac)
-[![Daily Downloads](https://poser.pugx.org/diecoding/yii2-rbac/d/daily?format=flat-square)](https://packagist.org/packages/diecoding/yii2-rbac)
-[![License](https://poser.pugx.org/diecoding/yii2-rbac/license?format=flat-square)](LICENSE.md)
-[![Quality Score](https://img.shields.io/scrutinizer/g/die-coding/yii2-rbac.svg?style=flat-square)](https://scrutinizer-ci.com/g/die-coding/yii2-rbac)
-[![Build Status](https://img.shields.io/scrutinizer/build/g/die-coding/yii2-rbac.svg?style=flat-square)](https://scrutinizer-ci.com/g/die-coding/yii2-rbac/build-status/master)
+[![Latest Stable Version](https://img.shields.io/github/release/die-coding/yii2-rbac.svg)](https://github.com/die-coding/yii2-rbac/releases)
+[![Total Downloads](https://poser.pugx.org/diecoding/yii2-rbac/downloads)](https://packagist.org/packages/diecoding/yii2-rbac)
+[![Monthly Downloads](https://poser.pugx.org/diecoding/yii2-rbac/d/monthly)](https://packagist.org/packages/diecoding/yii2-rbac)
+[![License](https://img.shields.io/github/license/die-coding/yii2-rbac.svg)](https://github.com/die-coding/yii2-rbac/blob/master/LICENSE.md)
+[![Quality Score](https://img.shields.io/scrutinizer/g/die-coding/yii2-rbac.svg)](https://scrutinizer-ci.com/g/die-coding/yii2-rbac)
+[![Build Status](https://img.shields.io/scrutinizer/build/g/die-coding/yii2-rbac.svg)](https://scrutinizer-ci.com/g/die-coding/yii2-rbac/build-status/master)
 
 ## Documentation
 
