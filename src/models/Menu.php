@@ -40,7 +40,7 @@ class Menu extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        $config = new Module([]);
+        $config = new Module(null);
 
         return $config->menuTable;
     }
@@ -124,7 +124,6 @@ class Menu extends \yii\db\ActiveRecord
      *
      * @param string $code
      * @param boolean $print
-     * @param mixed $defaultValue
      * @return mixed
      */
     public static function eval($code, $print = false)
@@ -182,7 +181,7 @@ HTML;
      */
     public function getMenuParent()
     {
-        return $this->hasOne(static::className(), ['id' => 'parent']);
+        return $this->hasOne(static::class, ['id' => 'parent']);
     }
 
     /**
@@ -192,7 +191,7 @@ HTML;
      */
     public function getMenuChildren()
     {
-        return $this->hasMany(static::className(), ['parent' => 'id']);
+        return $this->hasMany(static::class, ['parent' => 'id']);
     }
 
     /**

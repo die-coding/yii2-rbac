@@ -2,7 +2,6 @@
 
 namespace diecoding\rbac\helpers;
 
-use Yii;
 use yii\caching\TagDependency;
 use mdm\admin\components\Configs;
 use diecoding\rbac\models\Menu;
@@ -73,7 +72,7 @@ class MenuHelper
     public static function getList($userId, $root = null, $callback = null, $refresh = false)
     {
         $config = Configs::instance();
-        $module = new Module([]);
+        $module = new Module(null);
 
         /* @var $manager \yii\rbac\BaseManager */
         $manager = Configs::authManager();
@@ -154,7 +153,7 @@ class MenuHelper
      * @param  array $menus
      * @return array
      */
-    private static function requiredParent($assigned, &$menus)
+    protected static function requiredParent($assigned, &$menus)
     {
         $l = count($assigned);
         for ($i = 0; $i < $l; $i++) {
@@ -227,7 +226,7 @@ class MenuHelper
      * @param  integer $parent
      * @return array
      */
-    private static function normalizeMenu(&$assigned, &$menus, $callback, $parent = null)
+    protected static function normalizeMenu(&$assigned, &$menus, $callback, $parent = null)
     {
         $result = [];
         $order = [];

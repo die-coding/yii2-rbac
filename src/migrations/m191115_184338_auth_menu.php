@@ -48,7 +48,7 @@ class m191115_184338_auth_menu extends Migration
      */
     public function up()
     {
-        $config = new Module([]);
+        $config = new Module(null);
         $tableOptions = null;
         if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
@@ -74,7 +74,7 @@ class m191115_184338_auth_menu extends Migration
      */
     public function down()
     {
-        $config = new Module([]);
+        $config = new Module(null);
 
         $this->dropTable($config->menuTable);
     }
