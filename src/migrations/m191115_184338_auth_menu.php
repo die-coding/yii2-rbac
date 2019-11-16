@@ -12,7 +12,7 @@ use yii\rbac\DbManager;
  * @copyright 2019 Die Coding
  * @license MIT
  * @link https://www.diecoding.com
- * @version 1.0.0
+ * @version 0.0.1
  */
 class m191115_184338_auth_menu extends Migration
 {

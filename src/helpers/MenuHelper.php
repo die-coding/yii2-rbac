@@ -43,7 +43,7 @@ use diecoding\rbac\Module;
  * @copyright 2019 Die Coding
  * @license MIT
  * @link https://www.diecoding.com
- * @version 1.0.0
+ * @version 0.0.1
  */
 class MenuHelper
 {

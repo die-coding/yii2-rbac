@@ -9,7 +9,7 @@ namespace diecoding\rbac\components;
  * @copyright 2019 Die Coding
  * @license MIT
  * @link https://www.diecoding.com
- * @version 1.0.0
+ * @version 0.0.1
  */
 class AccessControl extends \mdm\admin\components\AccessControl
 {
