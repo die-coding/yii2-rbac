@@ -129,9 +129,9 @@ class Menu extends \yii\db\ActiveRecord
     public static function eval($code, $print = false)
     {
         try {
-            $result = print_r(eval("$code"), true);
+            $result = eval("$code");
             $error  = false;
-            $value  = $result;
+            $value  = print_r($result, true);
         } catch (\ParseError $e) {
             $result = false;
             $value  = Yii::t('diecoding-rbac', 'Error: Input code');

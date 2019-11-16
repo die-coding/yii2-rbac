@@ -242,7 +242,7 @@ class MenuHelper
                         'url' => static::parseRoute($menu['route']),
                         'icon' => $menu['icon'],
                         'visible' => static::convertVisible($menu['visible']),
-                        'options' => static::parseOptions($menu['options']),
+                        'linkOptions' => static::parseOptions($menu['options']),
                     ];
                     if ($menu['children'] != []) {
                         $item['items'] = $menu['children'];
