@@ -4,6 +4,7 @@ namespace diecoding\rbac\models;
 
 use Yii;
 use yii\db\Query;
+use mdm\admin\components\Configs;
 use diecoding\rbac\Module;
 
 /**
@@ -49,13 +50,11 @@ class Menu extends \yii\db\ActiveRecord
      */
     public static function getDb()
     {
-        $config = new Module([]);
-
-        if ($config->db !== null) {
-            return Yii::$app->get($config->db);
+        if (Configs::instance()->db !== null) {
+            return Configs::instance()->db;
+        } else {
+            return parent::getDb();
         }
-
-        return parent::getDb();
     }
 
     /**
@@ -204,7 +203,7 @@ HTML;
     {
         if (self::$_routes === null) {
             self::$_routes = [];
-            foreach (Yii::$app->authManager->getPermissions() as $name => $value) {
+            foreach (Configs::authManager()->getPermissions() as $name => $value) {
                 if ($name[0] === '/' && substr($name, -1) != '*') {
                     self::$_routes[] = $name;
                 }
@@ -216,7 +215,7 @@ HTML;
     public static function getMenuSource()
     {
         $tableName = static::tableName();
-        return (new Query())
+        return (new \yii\db\Query())
             ->select(['m.id', 'm.name', 'm.route', 'parent_name' => 'p.name'])
             ->from(['m' => $tableName])
             ->leftJoin(['p' => $tableName], '[[m.parent]]=[[p.id]]')

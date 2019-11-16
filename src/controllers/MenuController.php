@@ -8,16 +8,23 @@ use diecoding\rbac\models\searchs\Menu as MenuSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use mdm\admin\components\Helper;
 
 /**
  * MenuController implements the CRUD actions for Menu model.
+ *
+ * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
+ * @copyright 2019 Die Coding
+ * @license MIT
+ * @link https://www.diecoding.com
+ * @version 1.0.0
  */
 class MenuController extends Controller
 {
     private $_viewPath = '@diecoding/rbac/views/menu/';
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -25,7 +32,7 @@ class MenuController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ];
@@ -37,20 +44,19 @@ class MenuController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new MenuSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new MenuSearch;
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
         return $this->render($this->_viewPath . 'index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
         ]);
     }
 
     /**
      * Displays a single Menu model.
-     * @param integer $id
+     * @param  integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
@@ -66,47 +72,50 @@ class MenuController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Menu();
+        $model = new Menu;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Helper::invalidate();
             return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render($this->_viewPath . 'create', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render($this->_viewPath . 'create', [
-            'model' => $model,
-        ]);
     }
 
     /**
      * Updates an existing Menu model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param  integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->menuParent) {
+            $model->parent_name = $model->menuParent->name;
         }
-
-        return $this->render($this->_viewPath . 'update', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Helper::invalidate();
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render($this->_viewPath . 'update', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
      * Deletes an existing Menu model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param  integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        Helper::invalidate();
 
         return $this->redirect(['index']);
     }
@@ -114,7 +123,7 @@ class MenuController extends Controller
     /**
      * Finds the Menu model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param  integer $id
      * @return Menu the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -122,8 +131,8 @@ class MenuController extends Controller
     {
         if (($model = Menu::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

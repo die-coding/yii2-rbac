@@ -3,9 +3,11 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model diecoding\rbac\models\searchs\Menu */
-/* @var $form yii\widgets\ActiveForm */
+/**
+ * @var yii\web\View $this
+ * @var mdm\admin\models\searchs\Menu $model
+ * @var yii\widgets\ActiveForm $form
+ */
 ?>
 
 <div class="menu-search">
@@ -13,9 +15,6 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
     ]); ?>
 
     <?= $form->field($model, 'id') ?>
@@ -26,19 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'route') ?>
 
-    <?= $form->field($model, 'assign') ?>
-
-    <?php // echo $form->field($model, 'visible') ?>
-
-    <?php // echo $form->field($model, 'icon') ?>
-
-    <?php // echo $form->field($model, 'order') ?>
-
-    <?php // echo $form->field($model, 'options') ?>
+    <?= $form->field($model, 'data') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('diecoding-rbac', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('diecoding-rbac', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton(Yii::t('rbac-admin', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('rbac-admin', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

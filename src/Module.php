@@ -18,11 +18,6 @@ class Module extends \mdm\admin\Module
     const CACHE_TAG = 'diecoding.rbac';
 
     /**
-     * @var Connection Database connection. Defaults to "db".
-     */
-    public $db = 'db';
-
-    /**
      * @var string the name of the table storing menu item hierarchy. Defaults to "auth_menu".
      */
     public $menuTable = '{{%auth_menu}}';

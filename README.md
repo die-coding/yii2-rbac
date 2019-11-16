@@ -2,10 +2,6 @@ Yii2 RBAC
 =========
 RBAC / Auth Manager for Yii2 Extends 'mdmsoft/yii2-admin': '~2.0'
 
-Yii 2 RBAC ini merupakan Extends dari RBAC 'mdmsoft/yii2-admin': '~2.0'
-
-# MASIH VERSI DEVELOPMENT
-
 Cara Memasang
 -------------
 
