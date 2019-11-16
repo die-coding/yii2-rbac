@@ -8,13 +8,13 @@ Cara Memasang
 Melalui console:
 
 ```
-composer require diecoding/yii2-rbac
+composer require diecoding/yii2-rbac "dev-master"
 ```
 
 atau tambahkan:
 
 ```
-"diecoding/yii2-rbac": "*"
+"diecoding/yii2-rbac": "dev-master"
 ```
 
 pada baris `require` yang terdapat di berkas `composer.json`. Kemudian jalankan
