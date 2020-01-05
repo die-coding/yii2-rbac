@@ -51,7 +51,9 @@ class Module extends \mdm\admin\Module
             ];
         }
 
-        AppAsset::register(Yii::$app->view);
+        if (php_sapi_name() !== 'cli') {
+            AppAsset::register(Yii::$app->view);
+        }
 
         $this->controllerMap = [
             'menu' => [
