@@ -43,9 +43,10 @@ class Menu extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        $config = new Module(null);
+        $menuTable = Configs::instance()->menuTable;
+        $menuTable = $menuTable == "{{%menu}}" ? "{{%auth_menu}}" : $menuTable;
 
-        return $config->menuTable;
+        return $menuTable;
     }
 
     /**

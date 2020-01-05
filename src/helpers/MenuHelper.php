@@ -74,7 +74,6 @@ class MenuHelper
     public static function getList($userId, $root = null, $callback = null, $refresh = false)
     {
         $config = Configs::instance();
-        $module = new Module(null);
 
         /* @var $manager \yii\rbac\BaseManager */
         $manager = Configs::authManager();
@@ -130,8 +129,8 @@ class MenuHelper
             }
             $assigned = static::requiredParent($assigned, $menus);
             if ($cache !== null) {
-                $cache->set($key, $assigned, $module->cacheDuration, new TagDependency([
-                    'tags' => $module::CACHE_TAG
+                $cache->set($key, $assigned, $config->cacheDuration, new TagDependency([
+                    'tags' => $config::CACHE_TAG
                 ]));
             }
         }
@@ -140,8 +139,8 @@ class MenuHelper
         if ($refresh || $callback !== null || $cache === null || (($result = $cache->get($key)) === false)) {
             $result = static::normalizeMenu($assigned, $menus, $callback, $root);
             if ($cache !== null && $callback === null) {
-                $cache->set($key, $result, $module->cacheDuration, new TagDependency([
-                    'tags' => $module::CACHE_TAG
+                $cache->set($key, $result, $config->cacheDuration, new TagDependency([
+                    'tags' => $config::CACHE_TAG
                 ]));
             }
         }

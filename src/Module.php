@@ -15,18 +15,6 @@ use Yii;
  */
 class Module extends \mdm\admin\Module
 {
-    const CACHE_TAG = 'diecoding.rbac';
-
-    /**
-     * @var string the name of the table storing menu item hierarchy. Defaults to "auth_menu".
-     */
-    public $menuTable = '{{%auth_menu}}';
-
-    /**
-     * @var integer Cache duration. Default to a hour.
-     */
-    public $cacheDuration = 1 * 60 * 60;
-
     /**
      * @inheritDoc
      */

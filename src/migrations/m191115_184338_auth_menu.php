@@ -1,13 +1,13 @@
 <?php
 
-use diecoding\rbac\Module;
+use mdm\admin\components\Configs;
 use yii\base\InvalidConfigException;
 use yii\db\Migration;
 use yii\rbac\DbManager;
 
 /**
  * Migration table of table_auth_menu
- * 
+ *
  * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
  * @copyright 2019 Die Coding
  * @license MIT
@@ -48,23 +48,24 @@ class m191115_184338_auth_menu extends Migration
      */
     public function up()
     {
-        $config = new Module(null);
+        $menuTable = Configs::instance()->menuTable;
+        $menuTable = $menuTable == "{{%menu}}" ? "{{%auth_menu}}" : $menuTable;
         $tableOptions = null;
         if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable($config->menuTable, [
-            'id'      => $this->primaryKey(),
-            'name'    => $this->string(128)->notNull(),
-            'parent'  => $this->integer(),
-            'route'   => $this->string(),
+        $this->createTable($menuTable, [
+            'id' => $this->primaryKey(),
+            'name' => $this->string(128)->notNull(),
+            'parent' => $this->integer(),
+            'route' => $this->string(),
             'visible' => $this->smallInteger()->defaultValue(1),
-            'icon'    => $this->string(64),
-            'order'   => $this->integer(),
+            'icon' => $this->string(64),
+            'order' => $this->integer(),
             'options' => $this->binary(),
-            'data'    => $this->binary(),
+            'data' => $this->binary(),
             "FOREIGN KEY ([[parent]]) REFERENCES {$config->menuTable}([[id]]) ON DELETE SET NULL ON UPDATE CASCADE",
         ], $tableOptions);
     }
@@ -74,8 +75,9 @@ class m191115_184338_auth_menu extends Migration
      */
     public function down()
     {
-        $config = new Module(null);
+        $menuTable = Configs::instance()->menuTable;
+        $menuTable = $menuTable == "{{%menu}}" ? "{{%auth_menu}}" : $menuTable;
 
-        $this->dropTable($config->menuTable);
+        $this->dropTable($menuTable);
     }
 }
