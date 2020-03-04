@@ -5,7 +5,7 @@ namespace diecoding\rbac;
 use yii\web\AssetBundle;
 
 /**
- * @inheritDoc
+ * @inheritdoc
  * 
  * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
  * @copyright 2019 Die Coding

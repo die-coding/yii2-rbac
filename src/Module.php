@@ -5,7 +5,7 @@ namespace diecoding\rbac;
 use Yii;
 
 /**
- * @inheritDoc
+ * @inheritdoc
  * 
  * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
  * @copyright 2019 Die Coding
@@ -16,17 +16,17 @@ use Yii;
 class Module extends \mdm\admin\Module
 {
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public $controllerNamespace = 'mdm\admin\controllers';
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public $layout = 'left-menu';
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function init()
     {

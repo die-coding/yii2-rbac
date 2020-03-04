@@ -1,6 +1,10 @@
 Yii2 RBAC Change Log
 ====================
 
+Version 0.2.0
+--------------
+- Add denyActions
+
 Version 0.1.2
 --------------
 - Add Doc

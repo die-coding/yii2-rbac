@@ -5,7 +5,7 @@ namespace diecoding\rbac\components;
 use yii\base\Component;
 
 /**
- * @inheritDoc
+ * @inheritdoc
  * 
  * @author Die Coding (Sugeng Sulistiyawan) <diecoding@gmail.com>
  * @copyright 2019 Die Coding

@@ -64,6 +64,10 @@ The code below shows how to use ACF which is implemented as `diecoding\rbac\Acce
         // add a lot of actions here until you finally completed setting up rbac,
         // otherwise you may not even take a first step.
     ],
+    'denyActions' => [
+        'some-controller/some-action',
+        // The actions listed here will be deny to everyone including guests.
+    ],
 ],
 ...
 ```
