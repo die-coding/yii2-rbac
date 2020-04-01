@@ -3,6 +3,7 @@
 namespace diecoding\rbac;
 
 use Yii;
+use yii\base\BootstrapInterface;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -14,7 +15,7 @@ use yii\helpers\ArrayHelper;
  * @link https://www.diecoding.com
  * @version 0.0.1
  */
-class Module extends \mdm\admin\Module
+class Module extends \mdm\admin\Module implements BootstrapInterface
 {
     /**
      * @inheritdoc
