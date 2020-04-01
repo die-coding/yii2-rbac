@@ -3,7 +3,6 @@
 namespace diecoding\rbac;
 
 use Yii;
-use yii\base\BootstrapInterface;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -15,7 +14,7 @@ use yii\helpers\ArrayHelper;
  * @link https://www.diecoding.com
  * @version 0.0.1
  */
-class Module extends \mdm\admin\Module implements BootstrapInterface
+class Module extends \mdm\admin\Module
 {
     /**
      * @inheritdoc
@@ -73,28 +72,11 @@ class Module extends \mdm\admin\Module implements BootstrapInterface
         ];
 
         $this->setViewPath('@mdm/admin/views');
-    }
 
-    /**
-     * Bootstrap method to be called during application bootstrap stage.
-     * @param \yii\base\Application $app the application currently running
-     */
-    public function bootstrap($app)
-    {
-        $config = [];
         if ($this->isBs4()) {
-            $config = [
-                'components' => [
-                    'assetManager' => [
-                        'bundles' => [
-                            'yii\bootstrap\BootstrapAsset' => [],
-                            'yii\bootstrap\BootstrapPluginAsset' => [],
-                        ],
-                    ],
-                ],
-            ];
+            Yii::$app->assetManager->bundles['yii\bootstrap\BootstrapAsset'] = [];
+            Yii::$app->assetManager->bundles['yii\bootstrap\BootstrapPluginAsset'] = [];
         }
-        Yii::configure($app, $config);
     }
 
     /**
