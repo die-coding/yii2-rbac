@@ -73,7 +73,7 @@ class Module extends \mdm\admin\Module
 
         $this->setViewPath('@mdm/admin/views');
 
-        if ($this->isBs4()) {
+        if (strpos($_SERVER['REQUEST_URI'], $this->id) && $this->isBs4()) {
             Yii::$app->assetManager->bundles['yii\bootstrap\BootstrapAsset'] = [];
             Yii::$app->assetManager->bundles['yii\bootstrap\BootstrapPluginAsset'] = [];
         }
